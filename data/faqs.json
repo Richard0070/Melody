@@ -1,0 +1,9 @@
+{
+    "questions": [
+        {
+            "question": "Warning! English only",
+            "answer": "This is an English-only server. Refrain from chatting in foreign languages. Continuing to do will result in a warning.",
+            "id": 1
+        }
+    ]
+}
