@@ -8,7 +8,8 @@ class Screenshot(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases=["ss"])
+    @commands.command(name="screenshot", aliases=["ss"], usage="<url>", description="Take screenshot of a website.")
+    @commands.has_permissions(administrator=True)
     async def screenshot(self, ctx, url: str):
         m = await ctx.send('Taking screenshot...')
         async with async_playwright() as p:

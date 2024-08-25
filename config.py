@@ -11,8 +11,9 @@ def is_staff(ctx):
     user_role_ids = [role.id for role in ctx.author.roles]
     return any(role_id in staff_role_ids for role_id in user_role_ids)
   
-TOKEN = os.environ['TOKEN']
-MONGO = os.environ['MONGO']
+TOKEN = os.environ['TOKEN'] # bot token
+MONGO = os.environ['MONGO'] # mongo db key
+UPLOADER = os.environ['UPLOADER'] # your uploader.tech api key
 
 SUCCESS = "<:zep_check:1237231842470527088>"
 SETUP = "<:setup:1255996513776304291>"
