@@ -11,11 +11,11 @@ services:
     sync: false
   - key: TOKEN
     sync: false
+  - key: PLAYWRIGHT_BROWSERS_PATH
+    value: /opt/render/project/playwright
   region: oregon
   buildCommand: |
     pip install -r requirements.txt
-    playwright install chromium
-    echo "Installed Playwright browsers:"
-    ls /opt/render/.cache/ms-playwright
+    bash install_playwright.sh
   startCommand: python main.py
 version: "1"
