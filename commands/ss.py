@@ -19,8 +19,7 @@ class Screenshot(commands.Cog):
             screenshot_path = f'screenshot_{ctx.message.id}.png'
             await asyncio.sleep(3)
             await page.screenshot(path=screenshot_path)
-            await browser.close()
-        
+            await browser.close()        
             await m.delete()
 
             await ctx.send(file=discord.File(screenshot_path))

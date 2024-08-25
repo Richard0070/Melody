@@ -10,3 +10,7 @@ channel = "stable-24_05"
 run = ["sh", "-c", "python main.py"]
 deploymentTarget = "gce"
 ignorePorts = true
+
+[[ports]]
+localPort = 8080
+externalPort = 80

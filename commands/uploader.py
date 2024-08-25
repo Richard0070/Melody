@@ -9,7 +9,7 @@ class Uploader(commands.Cog):
         self.upload_api_key = config.UPLOADER  
 
     @commands.command(name="upload", usage="<attach image>", description="Image hosting with custom domain.")
-    @commands.has_permissions(adminstrator=True)
+    @commands.has_permissions(administrator=True)
     async def upload(self, ctx):
         if not ctx.message.attachments:
             await ctx.send("Please attach an image to upload.")

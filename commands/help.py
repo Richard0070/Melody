@@ -48,7 +48,8 @@ class Help(commands.Cog):
     @_help_command.autocomplete('command')
     async def autocomplete_command(self, interaction: discord.Interaction, current: str):
         commands_list = [cmd.qualified_name for cmd in self.bot.commands if cmd.qualified_name.startswith(current)]
-        return [app_commands.Choice(name=cmd, value=cmd) for cmd in commands_list]
+        limited_commands_list = commands_list[:20]
+        return [app_commands.Choice(name=cmd, value=cmd) for cmd in limited_commands_list]
 
 async def setup(bot):
     await bot.add_cog(Help(bot))
