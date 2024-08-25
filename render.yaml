@@ -1,0 +1,19 @@
+services:
+- type: web
+  name: Melody
+  runtime: python
+  repo: https://github.com/Richard0070/Melody
+  plan: free
+  envVars:
+  - key: UPLOADER
+    sync: false
+  - key: MONGO
+    sync: false
+  - key: TOKEN
+    sync: false
+  region: oregon
+  buildCommand: |
+    pip install -r requirements.txt
+    playwright install chromium
+  startCommand: python main.py
+version: "1"
