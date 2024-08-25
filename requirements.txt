@@ -1,0 +1,9 @@
+discord.py
+requests
+pymongo
+pyyaml
+googletrans
+psutil
+humanize
+git+https://github.com/Tom-the-Bomb/Discord-Games.git
+flask

@@ -6,6 +6,7 @@ import traceback
 import asyncio 
 import time 
 import json 
+import webserver
 
 def get_prefix(bot, message):
     file_path = 'data/prefixes.json'
@@ -118,4 +119,5 @@ async def on_message(message):
         await bot.process_commands(message)
         
 bot.remove_command('help')
+webserver.keep_alive()
 bot.run(config.TOKEN)
