@@ -15,5 +15,7 @@ services:
   buildCommand: |
     pip install -r requirements.txt
     playwright install chromium
+    echo "Installed Playwright browsers:"
+    ls /opt/render/.cache/ms-playwright
   startCommand: python main.py
 version: "1"
