@@ -8,33 +8,20 @@ class Screenshot(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="screenshot", aliases=["ss"], usage="<url>", description="Take a screenshot of a website.")
+    @commands.command(name="screenshot", aliases=["ss"], usage="<url>", description="Take screenshot of a website.")
     @commands.has_permissions(administrator=True)
     async def screenshot(self, ctx, url: str):
         m = await ctx.send('Taking screenshot...')
         async with async_playwright() as p:
             browser = await p.chromium.launch()
-
-            context = await browser.new_context()
-            page = await context.new_page()
-            # Navigate to Google's preferences to disable Safe Search
-            await page.goto('https://www.google.com/preferences')
-            await page.fill('input[name="safeSearch"]', 'off')  # Disable Safe Search
-            await page.click('button[aria-label="Save"]')  # Save settings
-            await page.wait_for_timeout(2000)  # Wait for settings to be saved
-            
+            page = await browser.new_page()
             await page.goto(url)
-
-            # Wait for a few seconds to ensure the page is fully loaded
-            await asyncio.sleep(3)
-
-            # Take the screenshot
             screenshot_path = f'screenshot_{ctx.message.id}.png'
+            await asyncio.sleep(3)
             await page.screenshot(path=screenshot_path)
             await browser.close()        
             await m.delete()
 
-            # Send the screenshot back to Discord & then remove the ss file from directory
             await ctx.send(file=discord.File(screenshot_path))
             os.remove(screenshot_path)
 
