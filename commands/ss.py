@@ -13,8 +13,16 @@ class Screenshot(commands.Cog):
     async def screenshot(self, ctx, url: str):
         m = await ctx.send('Taking screenshot...')
         async with async_playwright() as p:
-            browser = await p.chromium.launch(args=['--disable-web-security'])
-            page = await browser.new_page()
+            browser = await p.chromium.launch()
+
+            context = await browser.new_context()
+            page = await context.new_page()
+            # Navigate to Google's preferences to disable Safe Search
+            await page.goto('https://www.google.com/preferences')
+            await page.fill('input[name="safeSearch"]', 'off')  # Disable Safe Search
+            await page.click('button[aria-label="Save"]')  # Save settings
+            await page.wait_for_timeout(2000)  # Wait for settings to be saved
+            
             await page.goto(url)
 
             # Wait for a few seconds to ensure the page is fully loaded
