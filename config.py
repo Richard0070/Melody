@@ -15,7 +15,7 @@ TOKEN = os.environ['TOKEN'] # bot token
 MONGO = os.environ['MONGO'] # mongo db key
 UPLOADER = os.environ['UPLOADER'] # your uploader.tech api key
 
-SUCCESS = "<:zep_check:1237231842470527088>"
+SUCCESS = "<:melo_check:1295071806021177485>"
 SETUP = "<:setup:1255996513776304291>"
 DELETE = "<:delete:1244686471282163754>"
 MESSAGE = "<:message:1244858435736965172>"
