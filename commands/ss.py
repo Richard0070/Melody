@@ -13,12 +13,11 @@ class Screenshot(commands.Cog):
     async def screenshot(self, ctx, url: str):
         m = await ctx.send('Taking screenshot...')
         async with async_playwright() as p:
-            # Launch the browser with the necessary arguments
             browser = await p.chromium.launch(args=['--disable-web-security'])
             page = await browser.new_page()
             await page.goto(url)
 
-            # Optional: Wait for a few seconds to ensure the page is fully loaded
+            # Wait for a few seconds to ensure the page is fully loaded
             await asyncio.sleep(3)
 
             # Take the screenshot
@@ -27,7 +26,7 @@ class Screenshot(commands.Cog):
             await browser.close()        
             await m.delete()
 
-            # Send the screenshot back to Discord
+            # Send the screenshot back to Discord & then remove the ss file from directory
             await ctx.send(file=discord.File(screenshot_path))
             os.remove(screenshot_path)
 
