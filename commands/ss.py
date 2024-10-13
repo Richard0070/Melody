@@ -21,9 +21,6 @@ class Screenshot(commands.Cog):
 
             # Navigate to the URL and disable Safe Search on the same page
             await page.goto(url, waitUntil='load')  # Wait for page to load before disabling Safe Search
-            await page.evaluate(() => {
-                window.localStorage.setItem('google:safebrowsing', 'disabled');
-            })
 
             # Take the screenshot
             screenshot_path = f'screenshot_{ctx.message.id}.png'
