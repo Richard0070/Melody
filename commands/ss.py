@@ -11,19 +11,19 @@ class Screenshot(commands.Cog):
     @commands.command(name="screenshot", aliases=["ss"], usage="<url>", description="Take a screenshot of a website.")
     @commands.has_permissions(administrator=True)
     async def screenshot(self, ctx, url: str):
-        m = await ctx.send('Taking screenshot...')
+        m = await ctx.send('📸 Taking screenshot...')
         async with async_playwright() as p:
-            # Launch the browser with the --disable-safe-search argument
-            browser = await p.chromium.launch(args=['--disable-safe-search'])
+            # Launch the browser
+            browser = await p.chromium.launch()
 
             context = await browser.new_context()
             page = await context.new_page()
 
-            # Navigate to the desired URL
-            await page.goto(url)
-
-            # Wait for a few seconds to ensure the page is fully loaded
-            await asyncio.sleep(3)
+            # Navigate to the URL and disable Safe Search on the same page
+            await page.goto(url, waitUntil='load')  # Wait for page to load before disabling Safe Search
+            await page.evaluate(() => {
+                window.localStorage.setItem('google:safebrowsing', 'disabled');
+            })
 
             # Take the screenshot
             screenshot_path = f'screenshot_{ctx.message.id}.png'
