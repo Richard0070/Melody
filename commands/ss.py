@@ -16,10 +16,13 @@ class Screenshot(commands.Cog):
             browser = await p.chromium.launch()
             page = await browser.new_page()
             await page.goto(url)
+            
+            # Wait for the page to finish loading
+            await page.wait_for_load_state('networkidle')  # Wait until network is idle
+
             screenshot_path = f'screenshot_{ctx.message.id}.png'
-            await asyncio.sleep(3)
             await page.screenshot(path=screenshot_path)
-            await browser.close()        
+            await browser.close()
             await m.delete()
 
             await ctx.send(file=discord.File(screenshot_path))
