@@ -2,7 +2,7 @@ discord.py
 requests
 pymongo
 pyyaml
-googletrans
+python-gemini-api
 psutil
 humanize
 git+https://github.com/Tom-the-Bomb/Discord-Games.git
