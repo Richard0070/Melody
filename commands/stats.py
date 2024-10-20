@@ -30,7 +30,7 @@ class Stats(commands.Cog):
         embed.add_field(name='⏱️ Uptime', value=f'{config.REPLY} {uptime}', inline=True)
         embed.add_field(name=f'{config.LATENCY} Shard Latency', value=f'{config.REPLY} {shard_latency:.2f}ms', inline=True)
         embed.add_field(name=f'{config.CPU} CPU Usage', value=f'{config.REPLY} {cpu_usage:.2f}%', inline=True)
-        embed.add_field(name=f'{config.MEMORY} Memory Usage', value=f'{config.REPLY} {mem_used:.2f} MB / 256 MB', inline=True)
+        embed.add_field(name=f'{config.MEMORY} Memory Usage', value=f'{config.REPLY} {mem_used:.2f} MB / 512 MB', inline=True)
         await interaction.response.send_message(embed=embed)
 
 async def setup(bot):
