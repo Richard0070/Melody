@@ -14,6 +14,7 @@ def is_staff(ctx):
 TOKEN = os.environ['TOKEN'] # bot token
 MONGO = os.environ['MONGO'] # mongo db key
 UPLOADER = os.environ['UPLOADER'] # your uploader.tech api key
+BARD = os.environ['BARD'] # __Secure-1PSID key from Gemini
 
 SUCCESS = "<:melo_check:1295071806021177485>"
 SETUP = "<:setup:1255996513776304291>"
