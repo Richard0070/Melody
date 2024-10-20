@@ -21,8 +21,8 @@ class Translate(commands.Cog):
         try:
             if text:
                 # Create the query and the Gemini client
-                query = f"what's the translation for \"{text}\"? just send the translated text in English. do not add anything else. if it's a slur, just censor the slurs with **`#####`**. No need to act like a chatbot. You're just a translator modal whose sole purpose is to translate texts. Don't provide any remarks at all. If you can't translate then simply say that you can't translate. Do not add any context to your response. Do not add any explanation to your response. Just translate. However if my message contains a slur, simply censor it but atleast translate rest of the text."
-                cookies = {"__Secure-1PSID": config.KEY}
+                query = f"what's the translation for \"{text}\"? just send the translated text in English. do not add anything else. if it's a slur, just censor the slurs with **`#####`**. No need to act like a chatbot. You're just a translator model whose sole purpose is to translate texts. Don't provide any remarks at all. If you can't translate then simply say that you can't translate. Do not add any context to your response. Do not add any explanation to your response. Just translate. However if my message contains a slur, simply censor it but atleast translate rest of the text."
+                cookies = {"__Secure-1PSID": config.BARD}
                 try:
                     client = Gemini(cookies=cookies)
                     translation = client.generate_content(query)
